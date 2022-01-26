@@ -22,7 +22,7 @@ const Jokes = () => {
     const parsedData = await response.json();
     setJokeContainer(parsedData.joke);
   };
-  // testing
+
   return (
     <div>
       <div>{name ? <>Welcome, {name}!</> : <>Welcome!</>}</div>
