@@ -1,3 +1,4 @@
+import { responsiveProperty } from "@mui/material/styles/cssUtils";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -23,12 +24,22 @@ const Jokes = () => {
     setJokeContainer(parsedData.joke);
   };
 
+  const getYoMamaJoke = async () => {
+    const response = await fetch("https://api.yomomma.info/");
+    console.log(response);
+    const parsedData = await response.json();
+
+    setJokeContainer(parsedData.joke);
+  };
+
   return (
     <div>
-      <div>{name ? <>Welcome, {name}!</> : <>Welcome!</>}</div>
+      <div>{name ? <div>Welcome, {name}!</div> : <div>Welcome!</div>}</div>
       <div>Click a button to see a joke!</div>
       <button onClick={getDadJoke}>Dad Joke</button>
       <button onClick={getProgrammerJoke}>Programmer Joke</button>
+      <button onClick={getYoMamaJoke}>Yo Mama Joke</button>
+
       <div>{jokeContainer}</div>
     </div>
   );
